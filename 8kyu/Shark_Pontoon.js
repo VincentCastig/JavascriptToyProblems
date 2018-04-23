@@ -17,6 +17,13 @@ function shark(pontoonDistance, sharkDistance, youSpeed, sharkSpeed, dolphin){
     }
     return "Shark Bait!";
   }
+
+  function shark(pontoonDistance, sharkDistance, youSpeed, sharkSpeed, dolphin){
+    if(dolphin) {
+      sharkSpeed = sharkSpeed / 2;
+    }
+    return pontoonDistance / youSpeed < sharkDistance / sharkSpeed ? "Alive!" : "Shark Bait!"
+  }
   
   shark(23, 52, 3, 20, false)
   
