@@ -15,5 +15,48 @@ function finalGrade (exam, projects) {
     else if(exam > 50 && projects >= 2) return 75; 
     return 0;
   }
+<template>
+  <Child :childData="parentData" @childEvent="handleChildEvent"></Child>
+</template>
 
+<script>
+export default {
+  components: {
+    childComponent
+  },
+  data() {
+    return {
+      parentData: 'data'
+    };
+  },
+  methods: {
+    handleChildEvent(data) {
+        console.log('here is the', data)
+    }
+  }
+}
+</script>
+
+
+
+  <template>
+    <button @onClick="sendToParent"></button>
+  </template>
+
+  <script>
+    //import child from './child.js'
+    export default {
+      props: {
+        childProp: {
+          type: string, 
+          required: true
+        }
+      },
+      methods: {
+        sendToParent(){
+          this.$emit('childEvent', 'Date sent from child')
+        }
+      }
+    }
+  </script>
   
