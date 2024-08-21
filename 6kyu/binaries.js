@@ -39,6 +39,37 @@ function code(str) {
     return result;
 }
 
+function decode(strng) {
+    let i = 0;
+    let result = '';
+
+    while (i < strng.length) {
+        let countZeros = 0;
+
+        // Count the number of leading zeros
+        while (strng[i] === '0') {
+            countZeros++;
+            i++;
+        }
+
+        // Move past the '1' after zeros
+        i++;
+
+        // Extract the binary number of the length based on the number of leading zeros plus 1
+        let binaryDigit = strng.slice(i, i + countZeros + 1);
+
+        // Convert binary back to a decimal digit
+        let digit = parseInt(binaryDigit, 2);
+        result += digit.toString();
+
+        // Move the pointer ahead by the length of the binary digit
+        i += countZeros + 1;
+    }
+
+    return result;
+}
+
+
 console.log(code("77338855")); // Output: "001111001111011101110001100000011000001101001101"
 console.log(decode("001111001111011101110001100000011000001101001101")); // Output: "77338855"
 
